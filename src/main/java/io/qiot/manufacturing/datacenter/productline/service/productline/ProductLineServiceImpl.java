@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.qiot.manufacturing.commons.domain.productline.GlobalProductLineDTO;
+import io.qiot.manufacturing.datacenter.commons.domain.productline.GlobalProductLineDTO;
 import io.qiot.manufacturing.datacenter.productline.domain.event.NewGlobalProductLineEventDTO;
 import io.qiot.manufacturing.datacenter.productline.domain.persistence.GlobalProductLineBean;
 import io.qiot.manufacturing.datacenter.productline.persistence.GlobalProductLineRepository;

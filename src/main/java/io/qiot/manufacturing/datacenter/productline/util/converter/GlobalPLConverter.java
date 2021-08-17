@@ -7,8 +7,8 @@ import java.util.UUID;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import io.qiot.manufacturing.commons.domain.productline.GlobalProductLineDTO;
-import io.qiot.manufacturing.commons.util.converter.DataObjectConverter;
+import io.qiot.manufacturing.all.commons.util.converter.DataObjectConverter;
+import io.qiot.manufacturing.datacenter.commons.domain.productline.GlobalProductLineDTO;
 import io.qiot.manufacturing.datacenter.productline.domain.persistence.GlobalProductLineBean;
 
 @ApplicationScoped

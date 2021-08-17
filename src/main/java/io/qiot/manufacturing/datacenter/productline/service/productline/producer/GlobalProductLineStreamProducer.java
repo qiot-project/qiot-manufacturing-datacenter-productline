@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.qiot.manufacturing.commons.domain.productline.GlobalProductLineDTO;
+import io.qiot.manufacturing.datacenter.commons.domain.productline.GlobalProductLineDTO;
 
 /**
  * @author andreabattaglia

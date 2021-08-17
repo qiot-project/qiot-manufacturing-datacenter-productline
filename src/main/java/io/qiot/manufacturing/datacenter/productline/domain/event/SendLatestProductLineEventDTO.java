@@ -1,6 +1,6 @@
 package io.qiot.manufacturing.datacenter.productline.domain.event;
 
-import io.qiot.manufacturing.commons.domain.productline.ProductLineDTO;
+import io.qiot.manufacturing.all.commons.domain.productline.ProductLineDTO;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 
 /**

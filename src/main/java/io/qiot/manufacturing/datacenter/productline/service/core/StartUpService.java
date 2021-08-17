@@ -7,8 +7,8 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 
-import io.qiot.manufacturing.commons.domain.productline.GlobalProductLineDTO;
 import io.qiot.manufacturing.commons.util.producer.SampleGlobalProductLineProducer;
+import io.qiot.manufacturing.datacenter.commons.domain.productline.GlobalProductLineDTO;
 import io.qiot.manufacturing.datacenter.productline.domain.event.NewGlobalProductLineEventDTO;
 import io.quarkus.runtime.StartupEvent;
 

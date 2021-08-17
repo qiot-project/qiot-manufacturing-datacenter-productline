@@ -8,11 +8,11 @@ import javax.persistence.Cacheable;
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 
-import io.qiot.manufacturing.commons.domain.productline.ColorRangesDTO;
-import io.qiot.manufacturing.commons.domain.productline.MarginsDTO;
-import io.qiot.manufacturing.commons.domain.productline.PackagingRangesDTO;
-import io.qiot.manufacturing.commons.domain.productline.PrintingRangesDTO;
-import io.qiot.manufacturing.commons.domain.productline.SizeChartRangesDTO;
+import io.qiot.manufacturing.all.commons.domain.productline.ColorRangesDTO;
+import io.qiot.manufacturing.all.commons.domain.productline.PackagingRangesDTO;
+import io.qiot.manufacturing.all.commons.domain.productline.PrintingRangesDTO;
+import io.qiot.manufacturing.all.commons.domain.productline.SizeChartRangesDTO;
+import io.qiot.manufacturing.datacenter.commons.domain.productline.MarginsDTO;
 import io.quarkus.mongodb.panache.common.MongoEntity;
 import io.quarkus.runtime.annotations.RegisterForReflection;
 
