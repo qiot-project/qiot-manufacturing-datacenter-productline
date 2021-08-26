@@ -9,7 +9,7 @@
     <parent>
         <groupId>io.qiot.manufacturing</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0.alpha6-SNAPSHOT</version>
     </parent>
     <dependencies>
         <dependency>
@@ -28,22 +28,22 @@
         <dependency>
             <groupId>io.qiot.manufacturing.all</groupId>
             <artifactId>domain-model</artifactId>
-<!--             <version>1.0.0-SNAPSHOT</version> -->
+<!--             <version>1.0.0.alpha6-SNAPSHOT</version> -->
         </dependency>
         <dependency>
             <groupId>io.qiot.manufacturing.datacenter</groupId>
             <artifactId>domain-model</artifactId>
-<!--             <version>1.0.0-SNAPSHOT</version> -->
+<!--             <version>1.0.0.alpha6-SNAPSHOT</version> -->
         </dependency>
         <dependency>
             <groupId>io.qiot.manufacturing.all</groupId>
             <artifactId>utilities</artifactId>
-<!--             <version>1.0.0-SNAPSHOT</version> -->
+<!--             <version>1.0.0.alpha6-SNAPSHOT</version> -->
         </dependency>
         <dependency>
             <groupId>io.qiot.manufacturing.datacenter</groupId>
             <artifactId>utilities</artifactId>
-<!--             <version>1.0.0-SNAPSHOT</version> -->
+<!--             <version>1.0.0.alpha6-SNAPSHOT</version> -->
         </dependency>
         <!-- DATA -->
         <dependency>
