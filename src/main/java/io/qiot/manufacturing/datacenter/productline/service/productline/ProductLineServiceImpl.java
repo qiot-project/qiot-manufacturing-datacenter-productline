@@ -127,14 +127,18 @@ public class ProductLineServiceImpl implements ProductLineService {
 	}
 
     boolean validateMinMaxDoublePair(double min, double max) {
-    	return min < max &&
-    			min > 0 &&
-    			max > 0;
+//    	return min < max &&
+//    			min > 0 &&
+//    			max > 0;
+    	return true;
     }
     
     boolean validateMinMaxIntPair(int min, int max) {
-    	return min < max &&
-    			min > 0 &&
-    			max > 0;
+//    	return min < max &&
+//    			min > 0 &&
+//    			max > 0;
+//    	return true;
+    	return 0 < min &&
+    			0 < max; 
     }
 }

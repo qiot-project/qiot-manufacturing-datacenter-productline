@@ -9,7 +9,9 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.slf4j.Logger;
 
@@ -38,7 +40,8 @@ public class ServiceProductLineResource {
     @POST
     @Path("/object")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void add(GlobalProductLineDTO pl) {
+    public Response add(GlobalProductLineDTO pl) {
+		
     	if (LOGGER.isDebugEnabled()) {
     		LOGGER.debug("add(object) - start");
     	}
@@ -51,10 +54,16 @@ public class ServiceProductLineResource {
 	        NewGlobalProductLineEventDTO newGlobalProductLineEventDTO = new NewGlobalProductLineEventDTO();
 	        newGlobalProductLineEventDTO.productLine = pl;
 	        event.fire(newGlobalProductLineEventDTO);
+	        
+	    	if (LOGGER.isDebugEnabled()) {
+	    		LOGGER.debug("add(object) - finish");
+	    	}
+	        
+			return Response.status(201).entity(pl).build();
+    	} else {
+    		return Response.status(400, "Invalid Productline supplied").build();
     	}
-    	if (LOGGER.isDebugEnabled()) {
-    		LOGGER.debug("add(object) - finish");
-    	}
+    	
 
     }
 }
