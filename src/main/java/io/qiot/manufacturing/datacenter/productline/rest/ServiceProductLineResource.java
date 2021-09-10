@@ -38,7 +38,7 @@ public class ServiceProductLineResource {
     Event<NewGlobalProductLineEventDTO> event;
       
     @POST
-    @Path("/object")
+    @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response add(GlobalProductLineDTO pl) {
 		
@@ -47,9 +47,6 @@ public class ServiceProductLineResource {
     	}
 
     	if (productLineService.validateProductLine(pl)) {
-    		pl.active = false;
-    		pl.createdOn = Instant.now();
-    		pl.id = UUID.randomUUID();
     		
 	        NewGlobalProductLineEventDTO newGlobalProductLineEventDTO = new NewGlobalProductLineEventDTO();
 	        newGlobalProductLineEventDTO.productLine = pl;

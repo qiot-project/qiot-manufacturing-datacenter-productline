@@ -1,5 +1,7 @@
 package io.qiot.manufacturing.datacenter.productline.service.productline;
 
+import java.time.Instant;
+import java.util.UUID;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -59,6 +61,9 @@ public class ProductLineServiceImpl implements ProductLineService {
     void onNewProductLine(@Observes NewGlobalProductLineEventDTO event)
             throws Exception {
         GlobalProductLineDTO globalProductLineDTO = event.productLine;
+		globalProductLineDTO.active = true;		
+		globalProductLineDTO.id = UUID.randomUUID();
+		globalProductLineDTO.createdOn = Instant.now();
         handleNewProductLine(globalProductLineDTO);
     }
 
@@ -84,38 +89,34 @@ public class ProductLineServiceImpl implements ProductLineService {
     public boolean validateProductLine(GlobalProductLineDTO pl) {
     	return isSizeChartRangesDTOValid(pl.sizeChart) &&
     			isColorRangesDTOValid(pl.color) &&
-    			isPrintingRangesDTOValid(pl.print) &&
-    			isPackagingRangesDTOValid(pl.packaging) &&
+    			isPrintingRangesDTOValid(pl.print.min, pl.print.max) &&
+    			isPackagingRangesDTOValid(pl.packaging.min, pl.packaging.max) &&
     			isMarginsDTOValid(pl.margins);
     }
     
     boolean isSizeChartRangesDTOValid(SizeChartRangesDTO ranges) {
         
-        return validateMinMaxDoublePair(ranges.chestMin, ranges.chestMax) &&
-        		validateMinMaxDoublePair(ranges.shoulderMin, ranges.shoulderMax) &&
-        		validateMinMaxDoublePair(ranges.backMin, ranges.backMax) &&
-        		validateMinMaxDoublePair(ranges.waistMin, ranges.waistMax) &&
-        		validateMinMaxDoublePair(ranges.hipMin, ranges.hipMax);
+        return validateMinMaxChartPair(ranges.chestMin, ranges.chestMax) &&
+        		validateMinMaxChartPair(ranges.shoulderMin, ranges.shoulderMax) &&
+        		validateMinMaxChartPair(ranges.backMin, ranges.backMax) &&
+        		validateMinMaxChartPair(ranges.waistMin, ranges.waistMax) &&
+        		validateMinMaxChartPair(ranges.hipMin, ranges.hipMax);
     }
     
     boolean isColorRangesDTOValid(ColorRangesDTO ranges) {
         
-        return validateMinMaxIntPair(ranges.redMin, ranges.redMax) &&
-        		validateMinMaxIntPair(ranges.greenMin, ranges.greenMax) &&
-        		validateMinMaxIntPair(ranges.blueMin, ranges.blueMax);
+        return validateMinMaxColorPair(ranges.redMin, ranges.redMax) &&
+        		validateMinMaxColorPair(ranges.greenMin, ranges.greenMax) &&
+        		validateMinMaxColorPair(ranges.blueMin, ranges.blueMax);
     	
     }
     
-	boolean isPrintingRangesDTOValid(PrintingRangesDTO ranges) {
-//	    public double min = 0;
-//	    public double max = 1;
-		return true;
+	boolean isPrintingRangesDTOValid(double min, double max) {
+    	return (min >= 0 && min < max && max <= 1);
 	}
 	
-	boolean isPackagingRangesDTOValid(PackagingRangesDTO ranges) {
-//	    public double min = 0;
-//	    public double max = 1;
-		return true;
+	boolean isPackagingRangesDTOValid(double min, double max) {
+    	return (min >= 0 && min < max && max <= 1);
 	}
 	
 	boolean isMarginsDTOValid(MarginsDTO margins) {
@@ -126,19 +127,11 @@ public class ProductLineServiceImpl implements ProductLineService {
 	    		margins.packaging > 0;
 	}
 
-    boolean validateMinMaxDoublePair(double min, double max) {
-//    	return min < max &&
-//    			min > 0 &&
-//    			max > 0;
-    	return true;
+    boolean validateMinMaxChartPair(double min, double max) {
+    	return (min >= 0 && min < max);
     }
     
-    boolean validateMinMaxIntPair(int min, int max) {
-//    	return min < max &&
-//    			min > 0 &&
-//    			max > 0;
-//    	return true;
-    	return 0 < min &&
-    			0 < max; 
+    boolean validateMinMaxColorPair(int min, int max) {
+    	return (min >= 0 && min < max && max <= 255);
     }
 }
