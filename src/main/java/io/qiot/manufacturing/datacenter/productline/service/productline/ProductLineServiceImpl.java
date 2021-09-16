@@ -1,5 +1,7 @@
 package io.qiot.manufacturing.datacenter.productline.service.productline;
 
+import java.time.Instant;
+import java.util.UUID;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -12,7 +14,12 @@ import org.slf4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.qiot.manufacturing.all.commons.domain.productline.ColorRangesDTO;
+import io.qiot.manufacturing.all.commons.domain.productline.PackagingRangesDTO;
+import io.qiot.manufacturing.all.commons.domain.productline.PrintingRangesDTO;
+import io.qiot.manufacturing.all.commons.domain.productline.SizeChartRangesDTO;
 import io.qiot.manufacturing.datacenter.commons.domain.productline.GlobalProductLineDTO;
+import io.qiot.manufacturing.datacenter.commons.domain.productline.MarginsDTO;
 import io.qiot.manufacturing.datacenter.productline.domain.event.NewGlobalProductLineEventDTO;
 import io.qiot.manufacturing.datacenter.productline.domain.persistence.GlobalProductLineBean;
 import io.qiot.manufacturing.datacenter.productline.persistence.GlobalProductLineRepository;
@@ -54,6 +61,9 @@ public class ProductLineServiceImpl implements ProductLineService {
     void onNewProductLine(@Observes NewGlobalProductLineEventDTO event)
             throws Exception {
         GlobalProductLineDTO globalProductLineDTO = event.productLine;
+		globalProductLineDTO.active = true;		
+		globalProductLineDTO.id = UUID.randomUUID();
+		globalProductLineDTO.createdOn = Instant.now();
         handleNewProductLine(globalProductLineDTO);
     }
 
@@ -75,5 +85,53 @@ public class ProductLineServiceImpl implements ProductLineService {
         }
 
     }
+    
+    public boolean validateProductLine(GlobalProductLineDTO pl) {
+    	return isSizeChartRangesDTOValid(pl.sizeChart) &&
+    			isColorRangesDTOValid(pl.color) &&
+    			isPrintingRangesDTOValid(pl.print.min, pl.print.max) &&
+    			isPackagingRangesDTOValid(pl.packaging.min, pl.packaging.max) &&
+    			isMarginsDTOValid(pl.margins);
+    }
+    
+    boolean isSizeChartRangesDTOValid(SizeChartRangesDTO ranges) {
+        
+        return validateMinMaxChartPair(ranges.chestMin, ranges.chestMax) &&
+        		validateMinMaxChartPair(ranges.shoulderMin, ranges.shoulderMax) &&
+        		validateMinMaxChartPair(ranges.backMin, ranges.backMax) &&
+        		validateMinMaxChartPair(ranges.waistMin, ranges.waistMax) &&
+        		validateMinMaxChartPair(ranges.hipMin, ranges.hipMax);
+    }
+    
+    boolean isColorRangesDTOValid(ColorRangesDTO ranges) {
+        
+        return validateMinMaxColorPair(ranges.redMin, ranges.redMax) &&
+        		validateMinMaxColorPair(ranges.greenMin, ranges.greenMax) &&
+        		validateMinMaxColorPair(ranges.blueMin, ranges.blueMax);
+    	
+    }
+    
+	boolean isPrintingRangesDTOValid(double min, double max) {
+    	return (min >= 0 && min < max && max <= 1);
+	}
+	
+	boolean isPackagingRangesDTOValid(double min, double max) {
+    	return (min >= 0 && min < max && max <= 1);
+	}
+	
+	boolean isMarginsDTOValid(MarginsDTO margins) {
+	    
+	    return margins.weaving > 0 &&
+	    		margins.coloring > 0 &&
+	    		margins.printing > 0 &&
+	    		margins.packaging > 0;
+	}
 
+    boolean validateMinMaxChartPair(double min, double max) {
+    	return (min >= 0 && min < max);
+    }
+    
+    boolean validateMinMaxColorPair(int min, int max) {
+    	return (min >= 0 && min < max && max <= 255);
+    }
 }
