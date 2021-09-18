@@ -6,11 +6,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.qiot.manufacturing.datacenter</groupId>
     <artifactId>product-line-service</artifactId>
-    <version>1.0.0.alpha7-SNAPSHOT</version>
+    <version>1.0.0.alpha7</version>
     <parent>
         <groupId>io.qiot.manufacturing</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0.0.alpha7-SNAPSHOT</version>
+        <version>1.0.0.alpha7</version>
     </parent>
     <scm>
         <connection>scm:git:https://github.com/qiot-project/qiot-manufacturing-datacenter-productline.git</connection>
@@ -53,22 +53,22 @@
         <dependency>
             <groupId>io.qiot.manufacturing.all</groupId>
             <artifactId>domain-model</artifactId>
-            <version>1.0.0.alpha7-SNAPSHOT</version>
+            <version>1.0.0.alpha7</version>
         </dependency>
         <dependency>
             <groupId>io.qiot.manufacturing.datacenter</groupId>
             <artifactId>domain-model</artifactId>
-            <version>1.0.0.alpha7-SNAPSHOT</version>
+            <version>1.0.0.alpha7</version>
         </dependency>
         <dependency>
             <groupId>io.qiot.manufacturing.all</groupId>
             <artifactId>utilities</artifactId>
-            <version>1.0.0.alpha7-SNAPSHOT</version>
+            <version>1.0.0.alpha7</version>
         </dependency>
         <dependency>
             <groupId>io.qiot.manufacturing.datacenter</groupId>
             <artifactId>utilities</artifactId>
-            <version>1.0.0.alpha7-SNAPSHOT</version>
+            <version>1.0.0.alpha7</version>
         </dependency>
         <!-- DATA -->
         <dependency>
@@ -94,9 +94,18 @@
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- REST -->
         <dependency>
-        	<groupId>io.quarkus</groupId>
-        	<artifactId>quarkus-resteasy-jackson</artifactId>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-openapi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-swagger-ui</artifactId>
         </dependency>
     </dependencies>
     <profiles>
