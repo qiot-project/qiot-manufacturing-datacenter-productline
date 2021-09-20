@@ -21,17 +21,20 @@ public class GlobalProductLineStreamProducer {
 
     @Inject
     Logger LOGGER;
-    
+
     @Inject
     ObjectMapper MAPPER;
 
     @Inject
     @Channel("productline")
-    Emitter<String> productLineEmitter;
+    Emitter<GlobalProductLineDTO> productLineEmitter;
+    // Emitter<String> productLineEmitter;
 
-    public void process(GlobalProductLineDTO productLine) throws JsonProcessingException {
-        LOGGER.debug("Sending out new PRODUCT LINE to the factories:",
+    public void process(GlobalProductLineDTO productLine)
+            throws JsonProcessingException {
+        LOGGER.debug("Sending out new GLOBAL PRODUCT LINE to the factories:",
                 productLine);
-        productLineEmitter.send(MAPPER.writeValueAsString(productLine));
+        // productLineEmitter.send(MAPPER.writeValueAsString(productLine));
+        productLineEmitter.send(productLine);
     }
 }
