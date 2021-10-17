@@ -1,6 +1,7 @@
 #!/bin/sh
 
-./mvnw clean package -U -Pnative -Dquarkus.native.container-build=true
-docker rmi quay.io/qiotmanufacturing/datacenter-product-line:1.0.0-beta1 --force
-docker build -f src/main/docker/Dockerfile.native -t quay.io/qiotmanufacturing/datacenter-product-line:1.0.0-beta1 .
-docker push quay.io/qiotmanufacturing/datacenter-product-line:1.0.0-beta1
+mvn -B clean package -Pprod,native oc:build oc:push \
+          -Dquarkus.native.container-build=true \
+          -Dquarkus.container-image.build=true \
+          -Djkube.docker.push.username=${QUAY_USERNAME} \
+          -Djkube.docker.push.password=${QUAY_PASSWORD} 

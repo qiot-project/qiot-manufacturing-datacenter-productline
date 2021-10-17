@@ -15,8 +15,6 @@ import org.slf4j.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.qiot.manufacturing.all.commons.domain.productline.ColorRangesDTO;
-import io.qiot.manufacturing.all.commons.domain.productline.PackagingRangesDTO;
-import io.qiot.manufacturing.all.commons.domain.productline.PrintingRangesDTO;
 import io.qiot.manufacturing.all.commons.domain.productline.SizeChartRangesDTO;
 import io.qiot.manufacturing.datacenter.commons.domain.productline.GlobalProductLineDTO;
 import io.qiot.manufacturing.datacenter.commons.domain.productline.MarginsDTO;
