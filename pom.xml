@@ -157,7 +157,7 @@
             <properties>
                 <jkube.environment>prod</jkube.environment>
                 <jkube.build.strategy>jib</jkube.build.strategy>
-                <jkube.generator.name>quay.io/qiotmanufacturing/datacenter-plant-manager:${project.version}</jkube.generator.name>
+                <jkube.generator.name>quay.io/qiotmanufacturing/datacenter-product-line:${project.version}</jkube.generator.name>
             </properties>
         </profile>
         <profile>

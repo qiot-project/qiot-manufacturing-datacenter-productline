@@ -56,7 +56,6 @@ deploy:
     properties: |-
       ## Properties go here
       quarkus.kubernetes-client.namespace=manufacturing-dev
-      qiot.cert-manager.enabled=true
       qiot.productline.generate=false
       quarkus.mongodb.connection-string=nosqlstorage-service
       quarkus.mongodb.database=qiot_manufacturing
