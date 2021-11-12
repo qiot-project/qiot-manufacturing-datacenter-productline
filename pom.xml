@@ -62,7 +62,7 @@
         <dependency>
             <groupId>io.qiot.manufacturing.datacenter</groupId>
             <artifactId>domain-model</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.5</version>
         </dependency>
         <dependency>
             <groupId>io.qiot.ubi.all</groupId>
@@ -72,7 +72,7 @@
         <dependency>
             <groupId>io.qiot.manufacturing.datacenter</groupId>
             <artifactId>utilities</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.4</version>
         </dependency>
         <!-- DATA -->
         <dependency>
