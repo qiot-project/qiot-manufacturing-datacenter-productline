@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.qiot.manufacturing.datacenter</groupId>
     <artifactId>product-line-service</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <parent>
         <groupId>io.qiot.manufacturing</groupId>
         <artifactId>parent</artifactId>
