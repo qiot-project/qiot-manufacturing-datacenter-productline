@@ -123,6 +123,11 @@ jobs:
       - name: Rollback if failure
         if: ${{ failure() }}
         run: ./mvnw --batch-mode release:rollback
+      - name: Build with Maven
+        env:
+           ARTIFACTORY_USERNAME_REF: ${{ secrets.ARTIFACTORY_USERNAME }}
+           ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
+        run: mvn -B -Pprod,native deploy
       - name: Push Image
         run: |
           mvn -B -Pprod,native oc:build oc:push                          \
