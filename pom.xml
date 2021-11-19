@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.qiot.manufacturing.datacenter</groupId>
     <artifactId>product-line-service</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <parent>
         <groupId>io.qiot.manufacturing</groupId>
         <artifactId>parent</artifactId>
@@ -13,7 +13,7 @@
         <connection>scm:git:https://github.com/qiot-project/qiot-manufacturing-datacenter-productline.git</connection>
         <developerConnection>scm:git:https://github.com/qiot-project/qiot-manufacturing-datacenter-productline.git/</developerConnection>
         <url>https://github.com/qiot-project/qiot-manufacturing-datacenter-productline</url>
-        <tag>product-line-service-1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
     <repositories>
         <repository>
