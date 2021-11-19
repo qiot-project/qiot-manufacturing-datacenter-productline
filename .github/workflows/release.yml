@@ -119,9 +119,13 @@ jobs:
           ARTIFACTORY_TOKEN_REF: ${{ secrets.ARTIFACTORY_TOKEN }}
           ARTIFACTORY_TOKEN:  ${{ secrets.ARTIFACTORY_TOKEN }}
           # BUILD_ENV: 'github-actions'
-        run: ./mvnw --batch-mode release:perform -Pprod,native oc:build oc:push                          \
-          -Djkube.docker.push.username=${{ secrets.QUAY_MANUFACTURING_USERNAME }}      \
-          -Djkube.docker.push.password=${{ secrets.QUAY_MANUFACTURING_PASSWORD }}
+        run: ./mvnw --batch-mode release:perform
       - name: Rollback if failure
         if: ${{ failure() }}
         run: ./mvnw --batch-mode release:rollback
+      - name: Push Image
+        run: |
+          mvn -B -Pprod,native oc:build oc:push                          \
+          -Djkube.docker.push.username=${{ secrets.QUAY_MANUFACTURING_USERNAME }}      \
+          -Djkube.docker.push.password=${{ secrets.QUAY_MANUFACTURING_PASSWORD }}
+        
