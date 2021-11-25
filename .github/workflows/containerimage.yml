@@ -3,9 +3,9 @@ name: Image Release
 on:
   workflow_dispatch:
   
-  push:
-    tags:
-      - '*'
+  release:
+    types:
+      - created
   
 jobs:
   build:

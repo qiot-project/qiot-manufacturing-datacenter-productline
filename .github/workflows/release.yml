@@ -1,9 +1,9 @@
 name: Github Release
 
 on:
-  push:
+  [push, pull_request]:
     branches:
-      - release
+      - main
 
 jobs:
   build:
